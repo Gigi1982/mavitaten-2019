@@ -27,25 +27,23 @@
 	<body <?php body_class(); ?>>
 
 		<!-- wrapper -->
-		<div class="wrapper">
-
+		<div class="wrapper">            
 			<!-- header -->
 			<header class="header clear" role="banner">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="pr-5" href="<?php echo esc_url( home_url() ); ?>">
+                            <img width="150" src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo-mavi.jpg" alt="Logo" class="logo-img">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo esc_url( home_url() ); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
-					</div>
-					<!-- /logo -->
-
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
-
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <?php mavitaten_nav(); ?>
+                        </div>
+                    </nav>
+                    <!-- /nav -->
+                </div>
 			</header>
 			<!-- /header -->

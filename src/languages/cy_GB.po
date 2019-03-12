@@ -1,5 +1,5 @@
-# Translation of HTML5Blank (thema) in Cymraeg
-# This file is distributed under the same license as the HTML5Blank (thema) package.
+# Translation of mavitaten (thema) in Cymraeg
+# This file is distributed under the same license as the mavitaten (thema) package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2015-05-22 11:50:18+0000\n"
@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;\n"
 "X-Generator: GlotPress/0.1\n"
-"Project-Id-Version: HTML5Blank (thema)\n"
+"Project-Id-Version: mavitaten (thema)\n"
 
 #: ../404.php:9
 msgid "Page not found"

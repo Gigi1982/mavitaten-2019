@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: Robert DeVore | @deviorobert
- * URL: html5blank.com | @html5blank
+ * URL: mavitaten.com | @mavitaten
  * Custom functions, support, custom post types and more.
  */
 
@@ -56,7 +56,7 @@ if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 
     // Localisation Support.
-    load_theme_textdomain( 'html5blank', get_template_directory() . '/languages' );
+    load_theme_textdomain( 'mavitaten', get_template_directory() . '/languages' );
 }
 
 /*------------------------------------*\
@@ -64,7 +64,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 \*------------------------------------*/
 
 // HTML5 Blank navigation
-function html5blank_nav() {
+function mavitaten_nav() {
     wp_nav_menu(
     array(
         'theme_location'  => 'header-menu',
@@ -80,7 +80,7 @@ function html5blank_nav() {
         'after'           => '',
         'link_before'     => '',
         'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
+        'items_wrap'      => '<ul class="navbar-nav mr-auto">%3$s</ul>',
         'depth'           => 0,
         'walker'          => '',
         )
@@ -88,22 +88,19 @@ function html5blank_nav() {
 }
 
 // Load HTML5 Blank scripts (header.php)
-function html5blank_header_scripts() {
+function mavitaten_header_scripts() {
     if ( $GLOBALS['pagenow'] != 'wp-login.php' && ! is_admin() ) {
         if ( HTML5_DEBUG ) {
             // jQuery
             wp_deregister_script( 'jquery' );
-            wp_register_script( 'jquery', get_template_directory_uri() . '/js/lib/jquery.js', array(), '1.11.1' );
-
-            // Conditionizr
-            wp_register_script( 'conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0' );
+            wp_register_script( 'jquery', get_template_directory_uri() . '/js/lib//jquery-3.3.1.min.js', array(), '3.3.1' );
 
             // Modernizr
             wp_register_script( 'modernizr', get_template_directory_uri() . '/js/lib/modernizr.js', array(), '2.8.3' );
 
             // Custom scripts
             wp_register_script(
-                'html5blankscripts',
+                'mavitatenscripts',
                 get_template_directory_uri() . '/js/scripts.js',
                 array(
                     'conditionizr',
@@ -113,20 +110,20 @@ function html5blank_header_scripts() {
                 '1.0.0' );
 
             // Enqueue Scripts
-            wp_enqueue_script( 'html5blankscripts' );
+            wp_enqueue_script( 'mavitatenscripts' );
 
         // If production
         } else {
             // Scripts minify
-            wp_register_script( 'html5blankscripts-min', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0.0' );
+            wp_register_script( 'mavitatenscripts-min', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0.0' );
             // Enqueue Scripts
-            wp_enqueue_script( 'html5blankscripts-min' );
+            wp_enqueue_script( 'mavitatenscripts-min' );
         }
     }
 }
 
 // Load HTML5 Blank conditional scripts
-function html5blank_conditional_scripts() {
+function mavitaten_conditional_scripts() {
     if ( is_page( 'pagenamehere' ) ) {
         // Conditional script(s)
         wp_register_script( 'scriptname', get_template_directory_uri() . '/js/scriptname.js', array( 'jquery' ), '1.0.0' );
@@ -135,29 +132,29 @@ function html5blank_conditional_scripts() {
 }
 
 // Load HTML5 Blank styles
-function html5blank_styles() {
+function mavitaten_styles() {
     if ( HTML5_DEBUG ) {
         // normalize-css
         wp_register_style( 'normalize', get_template_directory_uri() . '/css/lib/normalize.css', array(), '7.0.0' );
 
         // Custom CSS
-        wp_register_style( 'html5blank', get_template_directory_uri() . '/style.css', array( 'normalize' ), '1.0' );
+        wp_register_style( 'mavitaten', get_template_directory_uri() . '/style.css', array( 'normalize' ), '1.0' );
 
         // Register CSS
-        wp_enqueue_style( 'html5blank' );
+        wp_enqueue_style( 'mavitaten' );
     } else {
         // Custom CSS
-        wp_register_style( 'html5blankcssmin', get_template_directory_uri() . '/style.css', array(), '1.0' );
+        wp_register_style( 'mavitatencssmin', get_template_directory_uri() . '/style.css', array(), '1.0' );
         // Register CSS
-        wp_enqueue_style( 'html5blankcssmin' );
+        wp_enqueue_style( 'mavitatencssmin' );
     }
 }
 
 // Register HTML5 Blank Navigation
 function register_html5_menu() {
     register_nav_menus( array( // Using array to specify more menus if needed
-        'header-menu'  => esc_html( 'Header Menu', 'html5blank' ), // Main Navigation
-        'extra-menu'   => esc_html( 'Extra Menu', 'html5blank' ) // Extra Navigation if needed (duplicate as many as you need!)
+        'header-menu'  => esc_html( 'Header Menu', 'mavitaten' ), // Main Navigation
+        'extra-menu'   => esc_html( 'Extra Menu', 'mavitaten' ) // Extra Navigation if needed (duplicate as many as you need!)
     ) );
 }
 
@@ -205,8 +202,8 @@ function remove_width_attribute( $html ) {
 if ( function_exists( 'register_sidebar' ) ) {
     // Define Sidebar Widget Area 1
     register_sidebar( array(
-        'name'          => esc_html( 'Widget Area 1', 'html5blank' ),
-        'description'   => esc_html( 'Description for this widget-area...', 'html5blank' ),
+        'name'          => esc_html( 'Widget Area 1', 'mavitaten' ),
+        'description'   => esc_html( 'Description for this widget-area...', 'mavitaten' ),
         'id'            => 'widget-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget'  => '</div>',
@@ -216,8 +213,8 @@ if ( function_exists( 'register_sidebar' ) ) {
 
     // Define Sidebar Widget Area 2
     register_sidebar( array(
-        'name'          => esc_html( 'Widget Area 2', 'html5blank' ),
-        'description'   => esc_html( 'Description for this widget-area...', 'html5blank' ),
+        'name'          => esc_html( 'Widget Area 2', 'mavitaten' ),
+        'description'   => esc_html( 'Description for this widget-area...', 'mavitaten' ),
         'id'            => 'widget-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget'  => '</div>',
@@ -279,7 +276,7 @@ function html5wp_excerpt( $length_callback = '', $more_callback = '' ) {
 // Custom View Article link to Post
 function html5_blank_view_article( $more ) {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink( $post->ID ) . '">' . esc_html_e( 'View Article', 'html5blank' ) . '</a>';
+    return '... <a class="view-article" href="' . get_permalink( $post->ID ) . '">' . esc_html_e( 'View Article', 'mavitaten' ) . '</a>';
 }
 
 // Remove Admin bar
@@ -299,7 +296,7 @@ function remove_thumbnail_dimensions( $html ) {
 }
 
 // Custom Gravatar in Settings > Discussion
-function html5blankgravatar ( $avatar_defaults ) {
+function mavitatengravatar ( $avatar_defaults ) {
     $myavatar                   = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = 'Custom Gravatar';
     return $avatar_defaults;
@@ -315,7 +312,7 @@ function enable_threaded_comments() {
 }
 
 // Custom Comments Callback
-function html5blankcomments( $comment, $args, $depth ) {
+function mavitatencomments( $comment, $args, $depth ) {
     $GLOBALS['comment'] = $comment;
     extract( $args, EXTR_SKIP );
 
@@ -362,10 +359,10 @@ function html5blankcomments( $comment, $args, $depth ) {
 \*------------------------------------*/
 
 // Add Actions
-add_action( 'wp_enqueue_scripts', 'html5blank_header_scripts' ); // Add Custom Scripts to wp_head
-add_action( 'wp_print_scripts', 'html5blank_conditional_scripts' ); // Add Conditional Page Scripts
+add_action( 'wp_enqueue_scripts', 'mavitaten_header_scripts' ); // Add Custom Scripts to wp_head
+add_action( 'wp_print_scripts', 'mavitaten_conditional_scripts' ); // Add Conditional Page Scripts
 add_action( 'get_header', 'enable_threaded_comments' ); // Enable Threaded Comments
-add_action( 'wp_enqueue_scripts', 'html5blank_styles' ); // Add Theme Stylesheet
+add_action( 'wp_enqueue_scripts', 'mavitaten_styles' ); // Add Theme Stylesheet
 add_action( 'init', 'register_html5_menu' ); // Add HTML5 Blank Menu
 add_action( 'init', 'create_post_type_html5' ); // Add our HTML5 Blank Custom Post Type
 add_action( 'widgets_init', 'my_remove_recent_comments_style' ); // Remove inline Recent Comment Styles from wp_head()
@@ -381,7 +378,7 @@ remove_action( 'wp_head', 'rel_canonical' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 // Add Filters
-add_filter( 'avatar_defaults', 'html5blankgravatar' ); // Custom Gravatar in Settings > Discussion
+add_filter( 'avatar_defaults', 'mavitatengravatar' ); // Custom Gravatar in Settings > Discussion
 add_filter( 'body_class', 'add_slug_to_body_class' ); // Add slug to body class (Starkers build)
 add_filter( 'widget_text', 'do_shortcode' ); // Allow shortcodes in Dynamic Sidebar
 add_filter( 'widget_text', 'shortcode_unautop' ); // Remove <p> tags in Dynamic Sidebars (better!)
@@ -420,18 +417,18 @@ function create_post_type_html5() {
     register_post_type( 'html5-blank', // Register Custom Post Type
         array(
         'labels'       => array(
-            'name'               => esc_html( 'HTML5 Blank Custom Post', 'html5blank' ), // Rename these to suit
-            'singular_name'      => esc_html( 'HTML5 Blank Custom Post', 'html5blank' ),
-            'add_new'            => esc_html( 'Add New', 'html5blank' ),
-            'add_new_item'       => esc_html( 'Add New HTML5 Blank Custom Post', 'html5blank' ),
-            'edit'               => esc_html( 'Edit', 'html5blank' ),
-            'edit_item'          => esc_html( 'Edit HTML5 Blank Custom Post', 'html5blank' ),
-            'new_item'           => esc_html( 'New HTML5 Blank Custom Post', 'html5blank' ),
-            'view'               => esc_html( 'View HTML5 Blank Custom Post', 'html5blank' ),
-            'view_item'          => esc_html( 'View HTML5 Blank Custom Post', 'html5blank' ),
-            'search_items'       => esc_html( 'Search HTML5 Blank Custom Post', 'html5blank' ),
-            'not_found'          => esc_html( 'No HTML5 Blank Custom Posts found', 'html5blank' ),
-            'not_found_in_trash' => esc_html( 'No HTML5 Blank Custom Posts found in Trash', 'html5blank' ),
+            'name'               => esc_html( 'HTML5 Blank Custom Post', 'mavitaten' ), // Rename these to suit
+            'singular_name'      => esc_html( 'HTML5 Blank Custom Post', 'mavitaten' ),
+            'add_new'            => esc_html( 'Add New', 'mavitaten' ),
+            'add_new_item'       => esc_html( 'Add New HTML5 Blank Custom Post', 'mavitaten' ),
+            'edit'               => esc_html( 'Edit', 'mavitaten' ),
+            'edit_item'          => esc_html( 'Edit HTML5 Blank Custom Post', 'mavitaten' ),
+            'new_item'           => esc_html( 'New HTML5 Blank Custom Post', 'mavitaten' ),
+            'view'               => esc_html( 'View HTML5 Blank Custom Post', 'mavitaten' ),
+            'view_item'          => esc_html( 'View HTML5 Blank Custom Post', 'mavitaten' ),
+            'search_items'       => esc_html( 'Search HTML5 Blank Custom Post', 'mavitaten' ),
+            'not_found'          => esc_html( 'No HTML5 Blank Custom Posts found', 'mavitaten' ),
+            'not_found_in_trash' => esc_html( 'No HTML5 Blank Custom Posts found in Trash', 'mavitaten' ),
         ),
         'public'       => true,
         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
